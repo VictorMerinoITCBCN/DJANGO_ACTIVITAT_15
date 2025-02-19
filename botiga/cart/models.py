@@ -7,6 +7,12 @@ class StatusChoices(models.TextChoices):
     DELIVERED = "DELIVERED", "Delivered"
     CANCELLED = "CANCELLED", "Cancelled"
 
+class User(models.Model):
+    name = models.CharField(null=False,max_length=50)
+    last_name = models.CharField(null=False, max_length=100)
+    email = models.EmailField(null=False, unique=True)
+    password = models.CharField(null=False)
+
 class Cart(models.Model):
     user_id = models.ForeignKey(User)
     created_at = models.DateTimeField(auto_now=True)
