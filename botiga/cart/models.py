@@ -1,4 +1,5 @@
 from django.db import models
+from botiga.models import User
 
 class StatusChoices(models.TextChoices):
     PENDING = "PENDING", "Pending"
@@ -7,30 +8,11 @@ class StatusChoices(models.TextChoices):
     DELIVERED = "DELIVERED", "Delivered"
     CANCELLED = "CANCELLED", "Cancelled"
 
-class User(models.Model):
-    name = models.CharField(null=False,max_length=50)
-    last_name = models.CharField(null=False, max_length=100)
-    email = models.EmailField(null=False, unique=True)
-    password = models.CharField(null=False)
-
 class Cart(models.Model):
     user_id = models.ForeignKey(User)
     created_at = models.DateTimeField(auto_now=True)
 
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart)
-    product = models.ForeignKey(Product)
-    quantity = models.PositiveIntegerField()
-
-class Order(models.Model):
-    user = models.ForeignKey(User)
-    status = models.CharField(choices=StatusChoices, default=StatusChoices.PENDING)
-
-    @property
-    def total_price(self):
-        return sum(item.product.price for item in self.orderitem_set.all())
-
-class OrderItem(models.Model):
-    order = models.ForeignKey(Order)
     product = models.ForeignKey(Product)
     quantity = models.PositiveIntegerField()
