@@ -21,5 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('botiga/', include("catalog.urls")),
     path('catalog/', include("catalog.urls")),
-    path('payment/', include("catalog.urls"))
+    path('payment/', include("catalog.urls")),
+    path("cart/", include("cart.urls")),
+    path("order/", include("order.urls"))
 ]
