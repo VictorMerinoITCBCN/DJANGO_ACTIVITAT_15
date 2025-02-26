@@ -10,3 +10,4 @@ class Product(models.Model):
     stock = models.IntegerField()
     categoria = models.CharField(max_length=200)
     img = models.CharField(max_length=200)
+
