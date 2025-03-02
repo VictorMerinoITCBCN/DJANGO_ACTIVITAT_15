@@ -7,4 +7,5 @@ from .serializer import CatalogSerializer
 # Create your views here.
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
+
     serializer_class = CatalogSerializer
