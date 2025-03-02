@@ -1,12 +1,8 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from views import OrderViewSet, OrderItemViewSet
-
-router = DefaultRouter()
-
-router.register(r"", OrderViewSet)
-router.register(r"item", OrderItemViewSet)
+from django.urls import path
+from .views import get_all_orders, get_not_completed_orders, delete_not_completed_orders
 
 urlpatterns = [
-    path("", include(router.urls))
+    path("", get_all_orders, name="get_all_orders"),
+    path("not-completed/", get_not_completed_orders, name="get_not_completed_orders"),
+    path("not-completed/", delete_not_completed_orders, name="delete_not_completed_orders")
 ]

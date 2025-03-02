@@ -14,9 +14,9 @@ class Order(models.Model):
 
     @property
     def total_price(self):
-        return sum(item.product.price * item.product.quantity for item in self.orderitem_set.all())
+        return sum(item.product.price * item.quantity for item in self.orderitem_set.all())
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
