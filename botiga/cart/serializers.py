@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from .models import Cart, CartItem
-from botiga.models import User
+from ..botiga.models import User
+from ..catalog.serializer import ProductSerializer
+
 
 class CartItemSerializer(serializers.ModelSerializer):
     product = ProductSerializer(read_only=True)

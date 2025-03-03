@@ -1,5 +1,6 @@
 from django.db import models
-from botiga.models import User
+from ..botiga.models import User
+from ..catalog.models import Product
 
 class StatusChoices(models.TextChoices):
     PENDING = "PENDING", "Pending"

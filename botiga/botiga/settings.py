@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'botiga',
     'cart',
     'catalog',
-    'orders',
+    'order',
     'payment'
 ]
 
