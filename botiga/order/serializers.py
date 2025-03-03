@@ -1,6 +1,7 @@
 from rest_framework import serializers
-from models import Order, OrderItem
+from .models import Order, OrderItem
 from botiga.models import User
+from catalog.serializer import ProductSerializer
 
 class OrderItemSerializer(serializers.ModelSerializer):
     product = ProductSerializer(read_only=True)

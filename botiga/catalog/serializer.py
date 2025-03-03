@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from django.utils.translation.trans_real import catalog
+from .models import Product
 
 class ProductSerializer(serializers.Serializer):
-    model = catalog
-    fields = "__all__"
+    model = Product
+    fields = '__all__'

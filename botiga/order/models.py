@@ -1,6 +1,6 @@
 from django.db import models
-from ..botiga.models import User
-from ..catalog.models import Product
+from botiga.models import User
+from catalog.models import Product
 
 class StatusChoices(models.TextChoices):
     PENDING = "PENDING", "Pending"
@@ -18,6 +18,6 @@ class Order(models.Model):
         return sum(item.product.price * item.product.quantity for item in self.orderitem_set.all())
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
